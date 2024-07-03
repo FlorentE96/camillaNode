@@ -8,7 +8,7 @@ camillaNode is a web based interface to control [CamillaDSP](https://github.com/
 #### Prerequisites 
 camillaNode uses node.js. If you dont have it installed already, you can install it from [here](https://nodejs.org/en/download) or directly from command line with `sudo apt install npm`
 
-Installing camillaNode requires you to download it from GitHub and installing required dependencies using NPM, all all which can be achieved as follows:
+Installing camillaNode requires you to download it from GitHub and installing required dependencies using NPM, all of which can be achieved as follows:
 
 ```
 git init
@@ -16,11 +16,11 @@ git pull https://github.com/ismailAtaman/camilllaNode.git
 npm install
 ```
 
-To start the web service just run it with `node .` Admin privialages might be required.
+To start the web service just run it with `node .` Admin privileges might be required.
 
-Once it is running, go to the **Connections** tab and enter a name, the ip address and the port of the machine running CamilaDSP. If you don't know the port,  check it in your camilladsp.service file in /lib/systemd/system/camilladsp.service. Port will be the value that follows -p option. If there is no such file try `sudo service camilladsp status` and see what is the path to the service file.
+Once it is running, go to the **Connections** tab and enter a name, the IP address and the port of the machine running CamilaDSP. If you don't know the port,  check it in your camilladsp.service file in /lib/systemd/system/camilladsp.service. Port will be the value that follows `-p` option. If there is no such file try `sudo service camilladsp status` and see what is the path to the service file.
 
-If you are going to run cammillaNode on a seperate PC or Mac to control a CamillaDSP running on a separate device, you need to make sure CamillaDSP is initialized with `-a 0.0.0.0` option. That binds the websocket server to the external network interface so that you can reach camillaDSP from another computer running on your network.
+If you are going to run camillaNode on a separate PC or Mac to control a CamillaDSP running on a separate device, you need to make sure CamillaDSP is initialized with `-a 0.0.0.0` option. That binds the websocket server to the external network interface so that you can reach camillaDSP from another computer running on your network.
 
 ### Usage
 
@@ -36,12 +36,12 @@ Shows you the basic device settings. It is not a comprehensive list. I have not 
 This is the tab with which you can make changes to color theme, enable/disable some functionality, change font sizes etc.
 
 #### Equalizer 
-This is where all the controls happen. Hope it will be all straightforward to EQ APO users. If not please do ask. For AutoEQ, headphone list loads AutoEQ settings for Oratory1990 and IEM list loads Crinicle's. Currently there is no option to change this, but am planning to add that in the future. Once loaded, you can save the EQ settings directly, or make changes and save afterwards. It is your ears and your taste after all.
+This is where all the controls happen. Hope it will be all straightforward to EQ APO users. If not please do ask. For AutoEQ, headphone list loads AutoEQ settings for Oratory1990 and IEM list loads Crinicle's. Currently there is no option to change this, but I am planning to add that in the future. Once loaded, you can save the EQ settings directly, or make changes and save afterwards. It is your ears and your taste after all.
 
 ## Running camillaNode as a service
 You can setup a service to run camillaNode automatically when the device is booted by following the steps described below:
 
-Create the camillanode.service file with your favourite editor, for example nano:
+Create the camillanode.service file with your favorite editor, for example Nano:
 `sudo nano /lib/systemd/system/camillanode.service`
 
 Enter the following text, change `WorkingDirectory` and `Environment` variables to the path where you saved camillaNode, save and close.
@@ -71,17 +71,17 @@ Now camillaNode service will start automatically after boot.
 
 ## Updating camillaNode 
 
-To update camillaNode, you need to stop the camillaNode service, download the updated files from github, and restart the service. All of this can be achieved simply with a straightforward bash script, provided below. 
+To update camillaNode, you need to stop the camillaNode service, download the updated files from GitHub, and restart the service. All of this can be achieved simply with a straightforward bash script, provided below. 
 
 Save this script in a .sh file (i.e. update.sh) and run it with `sudo bash update.sh`.
 
-Before doing so, do not forget to make sure  **username**, **service name** and **path** are correct please.
+Before doing so, do not forget to make sure  **username**, **service name** and **path** are correct.
 
 ```
 #! /bin/bash
-echo "This script will update camillaNode from github..."
+echo "This script will update camillaNode from GitHub..."
 sudo service camillanode stop
 cd /home/<USERNAME>/camillanode/
-git pull https://github.com/ismailAtaman/camilllaNode.git
+git pull https://github.com/ismailAtaman/camillaNode.git
 sudo service camillanode start
 ```
